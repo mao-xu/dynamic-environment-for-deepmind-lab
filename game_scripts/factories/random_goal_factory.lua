@@ -25,12 +25,8 @@ local setting_overrides = require 'decorators.setting_overrides'
 local random = require 'common.random'
 local map_maker = require 'dmlab.system.map_maker'
 local randomMap = random(map_maker:randomGen())
-local make_map = require 'common.make_map'
 
 local factory = {}
-
-
-
 
 --[[ Creates a Nav Maze Random Goal.
 Keyword arguments:
@@ -44,14 +40,10 @@ Keyword arguments:
 function factory.createLevelApi(kwargs)
   kwargs.scatteredRewardDensity = kwargs.scatteredRewardDensity or 0.1
   kwargs.episodeLengthSeconds = kwargs.episodeLengthSeconds or 600
-  local maze = maze_generation.mazeGeneration{entity = kwargs.entityLayer, variations = variationsLayer}
-
-  
-  --local maze = maze_generation.mazeGeneration{entity = kwargs.entityLayer}
-
+  local maze = maze_generation.mazeGeneration{entity = kwargs.entityLayer}
   local api = {}
 
-  function api:createPickup(class) 
+  function api:createPickup(class)
     return pickups.defaults[class]
   end
 
@@ -135,7 +127,6 @@ function factory.createLevelApi(kwargs)
     local map = kwargs.mapName
     kwargs.mapName = ''
     return map
-
   end
 
   custom_observations.decorate(api)

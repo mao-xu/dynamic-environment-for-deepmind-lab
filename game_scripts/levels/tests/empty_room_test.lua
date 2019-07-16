@@ -23,57 +23,28 @@ local timeout = require 'decorators.timeout'
 local api = {}
 
 local MAP_ENTITIES = [[
-  **************
-  *a * x *******
-  **     *   ***
-   ****  I   ***
-      *  *   ***
-      *  *******
-      *   ******
-  ******H*******
-  *        I P *
-  **************
+*********
+*       *
+*       *
+*       *
+*   P   *
+*       *
+*       *
+*       *
+*********
 ]]
-
-
-
-local MAP_VA = [[
-AAAAAAAAAAAAAA
-AAAAAAAAAAAAAA
-AAAAAAAAAAAAAA
-AAAAAAAAAAAAAA
-AAAAAAAAAAAAAA
-AAAAAAAAAAAAAA
-AAAAAAAAAAAAAA
-AAAAAAAAAAAAAA
-ACCCCCCCCABBBA
-AAAAAAAAAAAAAA
-]]
-
-
-
 
 function api:init(params)
   make_map.seedRng(1)
   api._map = make_map.makeMap{
       mapName = "empty_room",
       mapEntityLayer = MAP_ENTITIES,
-      mapVariationsLayer = MAP_VA,
       useSkybox = true,
   }
 end
 
-
-function api:createPickup(class) 
-  return pickups.defaults[class]
-end
-
 function api:nextMap()
-   
-   local map = self._map
-   self._map = ''
-   return map
-   --return self._map
+  return self._map
 end
 
 function api:updateSpawnVars(spawnVars)
@@ -85,8 +56,7 @@ function api:updateSpawnVars(spawnVars)
   return spawnVars
 end
 
-timeout.decorate(api, 600)
+timeout.decorate(api, 60 * 60)
 custom_observations.decorate(api)
-
 
 return api

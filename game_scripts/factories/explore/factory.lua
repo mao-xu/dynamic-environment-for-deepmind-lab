@@ -117,9 +117,6 @@ function factory.createLevelApi(kwargs)
         extraConnectionProbability = kwargs.opts.extraConnectionProbability,
     }
 
-  --  print(api._maze:entityLayer())
-  -- print(api._maze:variationsLayer())
-
     if kwargs.opts.decalScale and kwargs.opts.decalScale ~= 1 then
       custom_decals.scale(kwargs.opts.decalScale)
     end
@@ -137,7 +134,6 @@ function factory.createLevelApi(kwargs)
         useSkybox = kwargs.opts.useSkybox,
         decalFrequency = kwargs.opts.decalFrequency,
     }
-    
 
     if kwargs.level.start then
       kwargs.level:start(api._maze, episode, seed)

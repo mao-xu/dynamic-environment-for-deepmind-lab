@@ -35,44 +35,18 @@ Lights are placed randomly through out and decals are randomly placed on the
 walls according to the theme.
 ]]
 local TEXT_MAP = [[
-*****************
-***     *********
-*** *   *********
-*** *   *********
-*** *** *********
-*** *     ***   *
-*** *   * ***   *
-*** *   *   *   *
-*** *   *** *   *
-*** *   *** *   *
-*** *** *** * ***
-***   *   * *   *
-***** *   * * * *
-***** *   *   * *
-***** * ******* *
-*****           *
-*****************
+**************
+*G * A ***** *
+**     *   * *
+*****  I     *
+*      *   * *
+*  **  ***** *
+*   *   *    *
+******H*******
+*        I P *
+**************
 ]]
 
-local MAP_VA = [[
-.................
-...ABCCC.........
-...C.CCD.........
-...C.CCC.........
-...C...C.........
-...C.CCCCC...CCC.
-...C.CCC.C...CCC.
-...C.CCC.CCC.CCC.
-...C.CCC...C.CCC.
-...C.CCC...C.CCC.
-...C...C...C.C...
-...CCC.CCC.C.CCC.
-.....C.CCC.C.C.C.
-.....C.CCC.CCC.C.
-.....C.C.......C.
-.....CCCCCCCCCCC.
-.................  
-]]
 -- Called only once at start up. Settings not recognised by DM Lab internal
 -- are forwarded through the params dictionary.
 function api:init(params)
@@ -82,9 +56,8 @@ function api:init(params)
   api._map = make_map.makeMap{
       mapName = "demo_map_settings",
       mapEntityLayer = TEXT_MAP,
-      mapVariationsLayer = MAP_VA,
-      useSkybox = true, 
---      textureSet = texture_sets.TETRIS,
+      useSkybox = true,
+      textureSet = texture_sets.TETRIS
   }
 end
 
@@ -98,10 +71,9 @@ end
 -- an empty string. This informs the engine to only perform a quik map restart
 -- instead.
 function api:nextMap()
- local mapName = api._map
- api._map = ''
- return mapName
- --return api._map
+  local mapName = api._map
+  api._map = ''
+  return mapName
 end
 
 return api

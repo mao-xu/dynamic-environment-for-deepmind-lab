@@ -35,7 +35,6 @@ function level:restart(maze)
         local c = maze:getEntityCell(i, j)
         if c == 'P' then
           table.insert(spawnLocations, {i, j})
-          print(i,j)
         end
       end
   }
@@ -67,7 +66,6 @@ function level:start(maze, episode, seed)
   level._goalId = random:uniformInt(1, #level._goalLocations)
   local ij = level._goalLocations[level._goalId]
   level._goalX, level._goalY = maze:toWorldPos(ij[1], ij[2])
-  
 end
 
 level.spawnVarsUpdater = {
@@ -82,7 +80,6 @@ level.spawnVarsUpdater = {
     goal = function(spawnVars)
       local x, y = unpack(helpers.spawnVarToNumberTable(spawnVars.origin))
       if x == level._goalX and y == level._goalY then
-        print(x,y)
         spawnVars.id = tostring(level._goalId)
         return spawnVars
       else

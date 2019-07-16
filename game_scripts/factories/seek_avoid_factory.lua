@@ -61,7 +61,6 @@ function factory.createLevelApi(kwargs)
     local classname = spawnVars.classname
     if spawnVars.random_items then
       local possibleClassNames = helpers.split(spawnVars.random_items, ',')
-      print(possibleClassNames)
       if #possibleClassNames > 0 then
         classname = possibleClassNames[
           random:uniformInt(1, #possibleClassNames)]

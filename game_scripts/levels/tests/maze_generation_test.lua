@@ -43,8 +43,6 @@ function api:start(episode, seed)
       roomMinSize = 3,
       extraConnectionProbability = 0.0,
   }
-  print(api._maze:entityLayer())
-  print(api._maze:variationsLayer())
   api._map = make_map.makeMap{
       mapName = mapName,
       mapEntityLayer = api._maze:entityLayer(),
